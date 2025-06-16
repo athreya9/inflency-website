@@ -1,6 +1,38 @@
+"use client"
+
+import { useRef } from "react"
 import Header from "@/components/header"
 
 export default function Home() {
+  const howItWorksRef = useRef<HTMLElement>(null)
+
+  const scrollToHowItWorks = () => {
+    howItWorksRef.current?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const brandLogos = [
+    {
+      src: "https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/google.svg",
+      alt: "Google",
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/microsoft.svg",
+      alt: "Microsoft",
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/amazon.svg",
+      alt: "Amazon",
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/facebook.svg",
+      alt: "Facebook",
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/apple.svg",
+      alt: "Apple",
+    },
+  ]
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -28,7 +60,10 @@ export default function Home() {
                 >
                   Get started
                 </a>
-                <button className="border border-white text-white hover:bg-white hover:text-purple-900 px-8 py-3 rounded-lg font-semibold transition-colors">
+                <button
+                  onClick={scrollToHowItWorks}
+                  className="border border-white text-white hover:bg-white hover:text-purple-900 px-8 py-3 rounded-lg font-semibold transition-colors"
+                >
                   Learn more
                 </button>
               </div>
@@ -53,9 +88,9 @@ export default function Home() {
             Trusted by top brands and influencers worldwide
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-5 gap-8 items-center opacity-60">
-            {[1, 2, 3, 4, 5].map((i) => (
-              <div key={i} className="bg-gray-300 h-12 rounded flex items-center justify-center">
-                <span className="text-gray-500 font-semibold">BRAND LOGO</span>
+            {brandLogos.map((logo) => (
+              <div key={logo.alt} className="flex justify-center">
+                <img src={logo.src} alt={logo.alt} className="h-12" />
               </div>
             ))}
           </div>
@@ -63,7 +98,7 @@ export default function Home() {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-20">
+      <section ref={howItWorksRef} id="how-it-works" className="py-20">
         <div className="container mx-auto px-4 text-center">
           <p className="text-blue-600 font-semibold mb-4 uppercase tracking-wide">How it works</p>
           <h2 className="text-4xl font-bold text-gray-900 mb-8">Diversify your channels through an ecosystem</h2>

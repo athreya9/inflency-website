@@ -1,0 +1,8 @@
+{
+  "/page": "app/page.js",
+  "/for-influencers/page": "app/for-influencers/page.js",
+  "/for-brands/page": "app/for-brands/page.js",
+  "/services/page": "app/services/page.js",
+  "/podcast/page": "app/podcast/page.js",
+  "/about/page": "app/about/page.js"
+}
